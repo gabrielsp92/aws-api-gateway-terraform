@@ -1,0 +1,26 @@
+openapi: 3.0.1
+info:
+  title: openapi-example
+  version: 0.3.0
+  description: "<p>This is an example OpenAPI specification</p>"
+  termsOfService: "http://example.com/tos"
+  contact:
+    email: "example@example.com"
+servers:
+- url: http://example.com/
+  variables:
+    basePath:
+      default: /v1
+paths:
+  /health-check:
+    get:
+      operationId: healthCheck
+      description: check if its working
+      x-amazon-apigateway-integration:
+        uri: "http://pudim.com.br/"
+        passthroughBehavior: "when_no_match"
+        httpMethod: "GET"
+        type: "http_proxy"
+      responses:
+        200:
+          description: 'Successfull operation'
